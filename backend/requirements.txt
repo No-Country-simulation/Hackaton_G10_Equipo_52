@@ -8,6 +8,7 @@ langchain-core
 langchain-text-splitters
 langchain-google-genai
 langgraph
+langchain-community
 oci
 python-dotenv
 pytest

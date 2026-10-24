@@ -1,3 +1,13 @@
+
+import os, shutil, pathlib
+# Toma la configuración de OCI de los Secret Files de Render
+src = pathlib.Path("/etc/secrets/oci_config")
+if src.exists():
+ destino = pathlib.Path.home() / ".oci"
+ destino.mkdir(exist_ok=True)
+ shutil.copy(src, destino / "config")
+
+
 """API FastAPI. Contrato con el frontend: POST /adaptar → job_id; GET /adaptar/{job_id} → estado y resultado."""
 import logging
 import re
@@ -26,6 +36,22 @@ async def ciclo_de_vida(_app):
 
 
 app = FastAPI(title="Krystal API", version="1.0", lifespan=ciclo_de_vida)
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(CORSMiddleware,
+ allow_origins=os.getenv("CORS_ORIGINS", "*").split(","),
+ allow_methods=["*"], allow_headers=["*"])
+@app.get("/health")
+def health():
+ return {"ok": True}
+@app.get("/health/oci")
+def health_oci():
+ import oci
+ cfg = oci.config.from_file()
+ cliente = oci.object_storage.ObjectStorageClient(cfg)
+ objetos = cliente.list_objects(os.environ["OCI_NAMESPACE"],
+ os.environ["OCI_BUCKET_DOCS"], limit=5).data.objects
+ return {"ok": True, "bucket": os.environ["OCI_BUCKET_DOCS"], "objetos": [o.name
+for o in objetos]}
 app.add_middleware(CORSMiddleware, allow_origins=config.cors_origins, allow_methods=["*"], allow_headers=["*"])
 
 
