@@ -25,9 +25,10 @@ class Config:
     def __init__(self):
         # IA
         self.google_api_key = _texto("GOOGLE_API_KEY")
+        self.google_api_key_embeddings = _texto("GOOGLE_API_KEY_EMBEDDINGS") or self.google_api_key
         self.llm_model = _texto("LLM_MODEL", "gemini-3.8-flash")
         self.embedding_provider = _texto("EMBEDDING_PROVIDER", "gemini")
-        self.embedding_model = _texto("EMBEDDING_MODEL", "models/gemini-embedding-001")
+        self.embedding_model = _texto("EMBEDDING_MODEL", "models/gemini-embedding-001")        
         # RAG
         self.chunk_size = _numero("CHUNK_SIZE", 1000)
         self.chunk_overlap = _numero("CHUNK_OVERLAP", 150)
@@ -40,7 +41,8 @@ class Config:
         self.max_mb = _numero("MAX_MB", 20)
         self.max_paginas = _numero("MAX_PAGINAS", 200)
         self.max_chunks = _numero("MAX_CHUNKS", 400)
-        self.max_tareas = _numero("MAX_TAREAS", 2)
+        self.max_tareas = _numero("MAX_TAREAS", 1)
+        self.diagnostico_paralelo = _si("DIAGNOSTICO_PARALELO", "false")
         # Red
         self.cors_origins = [o.strip() for o in _texto("CORS_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
         # Almacenamiento

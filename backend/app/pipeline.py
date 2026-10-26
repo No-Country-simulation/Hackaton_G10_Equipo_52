@@ -77,13 +77,20 @@ def procesar(
         # 4) Agentes: la adaptación y el diagnóstico corren en paralelo
         llm = agents.crear_llm()
         preguntas = []
-        with ThreadPoolExecutor(max_workers=1) as pool:
-            diagnostico = pool.submit(agents.ejecutar_diagnostico, llm, doc_id) if incluir_diagnostico else None
-            estado = agents.ejecutar_adaptacion(llm, params.model_dump(), titulo, doc_id, al_avanzar=avanzar)
-            if diagnostico:
+        estado = agents.ejecutar_adaptacion(llm, params.model_dump(), titulo, doc_id, al_avanzar=avanzar)
+        if incluir_diagnostico and config.diagnostico_paralelo:
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                fut = pool.submit(agents.ejecutar_diagnostico, llm, doc_id)
                 try:
-                    preguntas = diagnostico.result()
-                except Exception as e:  # el diagnóstico es opcional: si falla, se omite
+                    preguntas = fut.result()
+                except Exception as e:
+                    log.warning("No se pudo generar el diagnóstico: %s", e)
+        elif incluir_diagnostico:
+            try:
+                preguntas = agents.ejecutar_diagnostico(llm, doc_id)
+            except Exception as e:
+                log.warning("No se pudo generar el diagnóstico: %s", e)
+            except Exception as e:  # el diagnóstico es opcional: si falla, se omite
                     log.warning("No se pudo generar el diagnóstico: %s", e)
         avanzar(3)
 
