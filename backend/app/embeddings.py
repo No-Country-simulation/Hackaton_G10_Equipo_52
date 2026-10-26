@@ -32,7 +32,7 @@ def obtener_embeddings() -> Embeddings:
     if config.embedding_provider == "fake":
         return EmbeddingsFalsos()
     if not config.google_api_key:
-        raise ErrorConfiguracion("Falta GOOGLE_API_KEY")
+        raise ErrorConfiguracion("Falta GOOGLE_API_KEY_EMBEDDINGS")
     from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-    return GoogleGenerativeAIEmbeddings(model=config.embedding_model, google_api_key=config.google_api_key)
+    return GoogleGenerativeAIEmbeddings(model=config.embedding_model, google_api_key=config.google_api_key_embeddings)
