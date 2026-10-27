@@ -81,10 +81,10 @@ def _conviene_respaldo(e: Exception) -> bool:
 
 # ---------- Modelos de lenguaje ----------
 def _crear_modelo(proveedor: str, modelo: str, clave: str = ""):
-    if proveedor == "groq":
+    if proveedor == "openai":
         clave = clave or config.llm_respaldo_api_key
         if not clave:
-            raise ErrorConfiguracion("Falta GROQ_API_KEY")
+            raise ErrorConfiguracion("Falta LLM_RESPALDO_API_KEY")
         from langchain_groq import ChatGroq
 
         return ChatGroq(model=modelo, temperature=0.3, api_key=clave, max_retries=1, timeout=TIEMPO_MAXIMO_S)
