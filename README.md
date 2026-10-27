@@ -463,25 +463,8 @@ Ver el archivo `LICENSE` del repositorio.
 
 
 ## :rocket:
-🚀 Tecnologías usadas :rocket:
 
-GitHub
-
-Visual Studio Code
-
-Python
-
-Render
-
-Gemini
-
-LangChain
-
-LangGraph
-
-ChromaDB
-
-OCI Object Storage
+🚀  :rocket:
 
 ## :flashlight:
 - Despliegue del proyecto a través de Render: https://krystal-g4vt.onrender.com/
