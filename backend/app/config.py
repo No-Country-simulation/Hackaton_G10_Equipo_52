@@ -42,7 +42,6 @@ class Config:
         self.max_paginas = _numero("MAX_PAGINAS", 200)
         self.max_chunks = _numero("MAX_CHUNKS", 400)
         self.max_tareas = _numero("MAX_TAREAS", 1)
-        self.diagnostico_paralelo = _si("DIAGNOSTICO_PARALELO", "false")
         # Red
         self.cors_origins = [o.strip() for o in _texto("CORS_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
         # Almacenamiento
