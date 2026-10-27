@@ -16,7 +16,7 @@ log = logging.getLogger("krystal.agents")
 # Etapa (1 a 3) que ve el usuario cuando termina cada nodo
 ETAPA_AL_TERMINAR = {"investigador": 2, "redactor": 3}
 PAUSAS_LIMITE = (8, 20, 40)  # segundos de espera si TODOS los modelos limitan la velocidad (error 429)
-TIEMPO_MAXIMO_S = 60  # un pedido que no responde en este tiempo se corta (y se pasa al respaldo, si hay)
+TIEMPO_MAXIMO_S = 240  # un pedido que no responde en este tiempo se corta (y se pasa al respaldo, si hay)
 
 
 class ErrorGeneracion(RuntimeError):
