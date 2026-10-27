@@ -27,8 +27,12 @@ class Config:
         self.google_api_key = _texto("GOOGLE_API_KEY")
         self.google_api_key_embeddings = _texto("GOOGLE_API_KEY_EMBEDDINGS") or self.google_api_key
         self.llm_model = _texto("LLM_MODEL", "gemini-3.8-flash")
+        self.llm_model_rapido = _texto("LLM_MODEL_RAPIDO", "gemini-2.0-flash-lite")
         self.embedding_provider = _texto("EMBEDDING_PROVIDER", "gemini")
         self.embedding_model = _texto("EMBEDDING_MODEL", "models/gemini-embedding-001")        
+        self.llm_respaldo_api_key = _texto("GROQ_API_KEY")
+        self.llm_respaldo_model = _texto("LLM_RESPALDO_MODEL", "llama-3.1-8b-instant")
+        self.llm_respaldo_provider = _texto("LLM_RESPALDO_PROVIDER", "groq")
         # RAG
         self.chunk_size = _numero("CHUNK_SIZE", 1000)
         self.chunk_overlap = _numero("CHUNK_OVERLAP", 150)
