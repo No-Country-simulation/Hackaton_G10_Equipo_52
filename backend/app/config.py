@@ -27,8 +27,13 @@ class Config:
         self.google_api_key = _texto("GOOGLE_API_KEY")
         self.google_api_key_embeddings = _texto("GOOGLE_API_KEY_EMBEDDINGS") or self.google_api_key
         self.llm_model = _texto("LLM_MODEL", "gemini-3.8-flash")
+        self.llm_model_rapido = _texto("LLM_MODEL_RAPIDO", "gemini-2.0-flash-lite")
+        self.llm_provider = _texto("LLM_PROVIDER", "gemini")
         self.embedding_provider = _texto("EMBEDDING_PROVIDER", "gemini")
         self.embedding_model = _texto("EMBEDDING_MODEL", "models/gemini-embedding-001")        
+        self.llm_respaldo_api_key = _texto("LLM_RESPALDO_API_KEY")
+        self.llm_respaldo_model = _texto("LLM_RESPALDO_MODEL", "openai/gpt-oss-120b")
+        self.llm_respaldo_provider = _texto("LLM_RESPALDO_PROVIDER", "openai")
         # RAG
         self.chunk_size = _numero("CHUNK_SIZE", 1000)
         self.chunk_overlap = _numero("CHUNK_OVERLAP", 150)
@@ -42,7 +47,7 @@ class Config:
         self.max_paginas = _numero("MAX_PAGINAS", 200)
         self.max_chunks = _numero("MAX_CHUNKS", 400)
         self.max_tareas = _numero("MAX_TAREAS", 1)
-        self.diagnostico_paralelo = _si("DIAGNOSTICO_PARALELO", "false")
+        self.max_contexto = _numero("MAX_CONTEXTO", 6)
         # Red
         self.cors_origins = [o.strip() for o in _texto("CORS_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
         # Almacenamiento
