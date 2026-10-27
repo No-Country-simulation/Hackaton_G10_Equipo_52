@@ -81,7 +81,7 @@ def _conviene_respaldo(e: Exception) -> bool:
 
 # ---------- Modelos de lenguaje ----------
 def _crear_modelo(proveedor: str, modelo: str, clave: str = ""):
-    if proveedor == "openai":
+    if proveedor == "groq":
         clave = clave or config.llm_respaldo_api_key
         if not clave:
             raise ErrorConfiguracion("Falta LLM_RESPALDO_API_KEY")

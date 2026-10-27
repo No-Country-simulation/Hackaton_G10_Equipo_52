@@ -32,8 +32,8 @@ class Config:
         self.embedding_provider = _texto("EMBEDDING_PROVIDER", "gemini")
         self.embedding_model = _texto("EMBEDDING_MODEL", "models/gemini-embedding-001")        
         self.llm_respaldo_api_key = _texto("LLM_RESPALDO_API_KEY")
-        self.llm_respaldo_model = _texto("LLM_RESPALDO_MODEL", "openai/gpt-oss-120b")
-        self.llm_respaldo_provider = _texto("LLM_RESPALDO_PROVIDER", "openai")
+        self.llm_respaldo_model = _texto("LLM_RESPALDO_MODEL", "groq/gpt-oss-120b")
+        self.llm_respaldo_provider = _texto("LLM_RESPALDO_PROVIDER", "groq")
         # RAG
         self.chunk_size = _numero("CHUNK_SIZE", 1000)
         self.chunk_overlap = _numero("CHUNK_OVERLAP", 150)
