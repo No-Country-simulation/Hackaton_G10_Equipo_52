@@ -1,3 +1,4 @@
+<img width="896" height="1200" alt="logo krystal ok" src="https://github.com/user-attachments/assets/7a718a0a-4cec-48b5-acc6-9b2a355af1f9" />
 ﻿<p align="center"> <strong>Sistema Inteligente de Adaptación y Generación de Contenido Educativo</strong>
 <br>  </p>
 <p align="center"> <strong> Hackaton_G10_Equipo_52  </p>
