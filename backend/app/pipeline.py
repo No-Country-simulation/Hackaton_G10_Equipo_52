@@ -83,12 +83,7 @@ def procesar(
             if diagnostico:
                 try:
                     preguntas = diagnostico.result()
-        elif incluir_diagnostico:
-            try:
-                preguntas = agents.ejecutar_diagnostico(llm, doc_id)
-            except Exception as e:
-                log.warning("No se pudo generar el diagnóstico: %s", e)
-            except Exception as e:  # el diagnóstico es opcional: si falla, se omite
+                except Exception as e:  # el diagnóstico es opcional: si falla, se omite
                     log.warning("No se pudo generar el diagnóstico: %s", e)
         avanzar(3)
 
