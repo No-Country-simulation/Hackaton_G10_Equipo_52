@@ -28,6 +28,7 @@ class Config:
         self.google_api_key_embeddings = _texto("GOOGLE_API_KEY_EMBEDDINGS") or self.google_api_key
         self.llm_model = _texto("LLM_MODEL", "gemini-3.8-flash")
         self.llm_model_rapido = _texto("LLM_MODEL_RAPIDO", "gemini-2.0-flash-lite")
+        self.llm_provider = _texto("LLM_PROVIDER", "gemini")
         self.embedding_provider = _texto("EMBEDDING_PROVIDER", "gemini")
         self.embedding_model = _texto("EMBEDDING_MODEL", "models/gemini-embedding-001")        
         self.llm_respaldo_api_key = _texto("GROQ_API_KEY")
