@@ -28,7 +28,7 @@ Structured Outputs
 
 
 ## :pencil2:
-📌 Operación del programa
+📌
 
 # Krystal · Aprende a tu manera
 
